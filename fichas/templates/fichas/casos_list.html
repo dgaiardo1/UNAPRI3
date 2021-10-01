@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<ul class="list-group">
+  {% for item in casos_list %}
+  <li class="list-group-item">
+      <span class="text-info">Caratula: </span> <span>{{ item.caso.caratula }}</span>
+      <br>
+      <span class="text-info">Ubicacion: </span><span>{{ item.caso.dependencia }}</span>
+      <br>
+      <span class="text-info">Fecha de Alta: </span><span>{{ item.caso.date_created }}</span>
+      <br>
+      <span class="text-info">Cantidad de tareas: </span><span>{{ item.number_of_tareas }}</span>
+      <br>
+      {% if item.ficha_rating is null %}
+      <span class="text-secondary">Ingrese una tarea para este Caso.</span>
+      <br>
+      {% endif %}
+      <a class=btn-primary btn-sm active" role="button" aria-pressed="true" href="/fichas{{ item.casos.id }}/">Tareas</a></li>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
